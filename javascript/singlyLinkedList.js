@@ -88,6 +88,12 @@ class SinglyLinkedList {
     }
   }
 
+  // GETNODEATINDEX:
+  // If the index is out of range log a notification
+  // set currentNode and count variables to the head and 0 respectively
+  // While currentNode:
+  // if count === index log the nextNode value of the currentNode
+  // else increment the count by one and set the currentNode variable to the nextNode value of the currentNode
   getNodeAtIndex(index) {
     if (index < 0 || index > this.nodeCount) {
       console.log('Index out of Range');
