@@ -16,17 +16,26 @@ class SinglyLinkedList {
   // Pass the current head object as the nextNode
   // Set the new Node object as the head
   // increment the length of the list by 1
-  addNode(input) {
+  addNodeToFront(input) {
     this.head = new Node(input, this.head);
     this.length++;
+  }
+
+  // Set the current head of the list to currentHead
+  // while currentHead has a value:
+  // console log that nodes value
+  // update the currentHead variable with the nextNode value
+  printList() {
+    let currentHead = this.head;
+    while (currentHead) {
+      console.log(currentHead.nodeData);
+      currentHead = currentHead.nextNode;
+    }
   }
 }
 
 const singly = new SinglyLinkedList();
 
-singly.addNode(10);
-singly.addNode(1);
-// const dick = singly.insert(1);
-// const shit = singly.add(8);
-
-console.log(singly);
+singly.addNodeToFront(10);
+singly.addNodeToFront(1);
+singly.printList();
