@@ -65,7 +65,7 @@ class SinglyLinkedList {
   // Set the nextNode key of the previousNode to the new Node instance
   // and increment the nodeCount
   addNodeAtIndex(input, index) {
-    if (index > 0 && index > this.size) {
+    if (index < 0 || index > this.nodeCount) {
       return;
     } else if (index === 0) {
       this.addNodeToFront(input);
@@ -88,6 +88,23 @@ class SinglyLinkedList {
     }
   }
 
+  getNodeAtIndex(index) {
+    if (index < 0 || index > this.nodeCount) {
+      console.log('Index out of Range');
+      console.log(this.nodeCount);
+    } else {
+      let currentNode = this.head;
+      let count = 0;
+      while (currentNode) {
+        if (count === index) {
+          console.log(currentNode.nodeData);
+        }
+        count++;
+        currentNode = currentNode.nextNode;
+      }
+    }
+  }
+
   // PRINTLIST:
   // Set the current head of the list to currentHead
   // while currentHead has a value:
@@ -104,10 +121,12 @@ class SinglyLinkedList {
 
 const singly = new SinglyLinkedList();
 
-singly.addNodeToFront(3);
-singly.addNodeToFront(2);
-singly.addNodeToFront(1);
-singly.addNodeToBack(4);
-singly.addNodeAtIndex(300, 3);
+singly.addNodeToFront(32);
+singly.addNodeToFront(26);
+singly.addNodeToFront(15);
+singly.addNodeToBack(48);
+singly.addNodeAtIndex(51, 3);
 
 singly.printList();
+console.log('#######################');
+singly.getNodeAtIndex(10);
