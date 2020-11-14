@@ -29,4 +29,22 @@ class SinglyLinkedList {
     // Return the list
     return this;
   }
+
+  // Create an Unshift method
+  unshift(val) {
+    const newNode = new Node(val);
+    // If the list is empty
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      // Add current head pointer to the new head(new node) to make the new node the head
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    // Increment length by 1
+    this.length++;
+    // Return the list
+    return this;
+  }
 }
