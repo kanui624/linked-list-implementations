@@ -96,19 +96,44 @@ class SinglyLinkedList {
   // else increment the count by one and set the currentNode variable to the nextNode value of the currentNode
   getNodeAtIndex(index) {
     if (index < 0 || index > this.nodeCount) {
-      console.log('Index out of Range');
-      console.log(this.nodeCount);
+      console.log(`Index ${index} is out of Range`);
+      console.log(`Node Count: ${this.nodeCount}`);
     } else {
       let currentNode = this.head;
       let count = 0;
       while (currentNode) {
         if (count === index) {
-          console.log(currentNode.nodeData);
+          console.log(`Index Passed In: ${index}`);
+          console.log(`${currentNode.nodeData} is at index ${index}`);
         }
         count++;
         currentNode = currentNode.nextNode;
       }
     }
+  }
+
+  removeNodeAtIndex(index) {
+    if (index < 0 || index > this.nodeCount) {
+      console.log(`Index ${index} is out of Range, List is unchanged:`);
+    }
+    let currentNode = this.head;
+    let previousNode;
+    let count = 0;
+
+    if (index === 0) {
+      this.head = currentNode.nextNode;
+    } else {
+      while (count != index) {
+        count++;
+        previousNode = currentNode;
+        currentNode = currentNode.nextNode;
+      }
+      previousNode.nextNode = currentNode.nextNode;
+    }
+    console.log(
+      `Node at index[${index}] - nodeData: ${currentNode.nodeData} was removed. Updated list:`
+    );
+    this.nodeCount--;
   }
 
   // PRINTLIST:
@@ -134,5 +159,8 @@ singly.addNodeToBack(48);
 singly.addNodeAtIndex(51, 3);
 
 singly.printList();
-console.log('#######################');
-singly.getNodeAtIndex(10);
+singly.removeNodeAtIndex(0);
+singly.printList();
+singly.removeNodeAtIndex(2);
+singly.printList();
+singly.getNodeAtIndex(2);
