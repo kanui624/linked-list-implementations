@@ -103,8 +103,7 @@ class SinglyLinkedList {
       let count = 0;
       while (currentNode) {
         if (count === index) {
-          console.log(`Index Passed In: ${index}`);
-          console.log(`${currentNode.nodeData} is at index ${index}`);
+          console.log(`${currentNode.nodeData} is at index[${index}]`);
         }
         count++;
         currentNode = currentNode.nextNode;
@@ -114,26 +113,35 @@ class SinglyLinkedList {
 
   removeNodeAtIndex(index) {
     if (index < 0 || index > this.nodeCount) {
-      console.log(`Index ${index} is out of Range, List is unchanged:`);
-    }
-    let currentNode = this.head;
-    let previousNode;
-    let count = 0;
-
-    if (index === 0) {
-      this.head = currentNode.nextNode;
+      console.log(
+        `Cannot remove node at index[${index}], it's out of range. List unchanged:`
+      );
     } else {
-      while (count != index) {
-        count++;
-        previousNode = currentNode;
-        currentNode = currentNode.nextNode;
+      let currentNode = this.head;
+      let previousNode;
+      let count = 0;
+
+      if (index === 0) {
+        this.head = currentNode.nextNode;
+      } else {
+        while (count != index) {
+          count++;
+          previousNode = currentNode;
+          currentNode = currentNode.nextNode;
+        }
+        previousNode.nextNode = currentNode.nextNode;
       }
-      previousNode.nextNode = currentNode.nextNode;
+      console.log(
+        `nodeData: ${currentNode.nodeData} at index[${index}] was removed. Updated list:`
+      );
+      this.nodeCount--;
     }
-    console.log(
-      `Node at index[${index}] - nodeData: ${currentNode.nodeData} was removed. Updated list:`
-    );
-    this.nodeCount--;
+  }
+
+  clearLinkedList() {
+    this.head = null;
+    this.nodeCount = 0;
+    console.log('Clear list was called, list data was erased');
   }
 
   // PRINTLIST:
@@ -142,10 +150,14 @@ class SinglyLinkedList {
   // console log that nodes value
   // update the currentHead variable with the nextNode value
   printList() {
-    let currentHead = this.head;
-    while (currentHead) {
-      console.log(currentHead.nodeData);
-      currentHead = currentHead.nextNode;
+    if (this.head && this.nodeCount != 0) {
+      let currentHead = this.head;
+      while (currentHead) {
+        console.log(currentHead.nodeData);
+        currentHead = currentHead.nextNode;
+      }
+    } else {
+      console.log('No List Data');
     }
   }
 }
@@ -160,7 +172,10 @@ singly.addNodeAtIndex(51, 3);
 
 singly.printList();
 singly.removeNodeAtIndex(0);
-singly.printList();
-singly.removeNodeAtIndex(2);
-singly.printList();
+console.log('---------------------');
 singly.getNodeAtIndex(2);
+singly.printList();
+singly.removeNodeAtIndex(12);
+singly.printList();
+singly.clearLinkedList();
+singly.printList();
