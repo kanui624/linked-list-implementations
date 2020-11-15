@@ -49,6 +49,7 @@ LinkedList.prototype.getIndex = function (index) {
   }
   return null;
 };
+
 LinkedList.prototype.insertAtIndex = function (index, input) {
   if (!this.head) {
     this.head = new Node(input);
@@ -59,11 +60,60 @@ LinkedList.prototype.insertAtIndex = function (index, input) {
     return;
   }
 
-  const previousNode = this.getAt(index - 1);
+  const previousNode = this.getIndex(index - 1);
   let newNode = new Node(input);
-  newNode.nextNode = previousNOde.nextNode;
+  newNode.nextNode = previousNode.nextNode;
   previousNode.nextNode = newNode;
 
+  return this.head;
+};
+
+LinkedList.prototype.deleteHeadNode = function () {
+  if (!this.head) {
+    return;
+  }
+  this.head = this.head.next;
+  return this.head;
+};
+
+LinkedList.prototype.deleteLastNode = function () {
+  if (!this.head) {
+    return null;
+  }
+  if (!this.head.nextNode) {
+    this.head = null;
+    return;
+  }
+  let previousNode = this.head;
+  let tail = this.head.nextNode;
+
+  while (tail.nextNode !== null) {
+    previousNode = tail;
+    tail = tail.nextNode;
+  }
+
+  previousNode.nextNode = null;
+  return this.head;
+};
+
+LinkedList.prototype.deleteAt = function (index) {
+  if (!this.head) {
+    this.head = new Node(input);
+    return;
+  }
+
+  if (index === 0) {
+    this.head = this.head.nextNode;
+    return;
+  }
+
+  const previousNode = this.getAt(index - 1);
+
+  if (!previousNode || !previous.nextNode) {
+    return;
+  }
+
+  previousNode.nextNode = previousNode.nextNode.nextNode;
   return this.head;
 };
 
@@ -77,5 +127,7 @@ list.addToFront(2);
 list.addToFront(1);
 list.addToEnd(4);
 list.addToEnd(4);
-list.insertAtIndex(0, 300);
+list.deleteLastNode();
+list.insertAtIndex(1, 300);
+
 list.printLinkedList();
