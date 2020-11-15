@@ -22,4 +22,19 @@ LinkedList.prototype.addToFront = function (input) {
   return this.head;
 };
 
+LinkedList.prototype.addToBack = function (input) {
+  let newNode = new Node(input);
+
+  if (!this.head) {
+    this.head = newNode;
+    return this.head;
+  } else {
+    let tail = this.head;
+    while (tail.nextNode !== null) {
+      tail = tail.nextNode;
+    }
+    tail.nextNode = newNode;
+    return this.head;
+  }
+};
 let list = new LinkedList();
