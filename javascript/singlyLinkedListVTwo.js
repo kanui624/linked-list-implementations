@@ -49,6 +49,23 @@ LinkedList.prototype.getIndex = function (index) {
   }
   return null;
 };
+LinkedList.prototype.insertAtIndex = function (index, input) {
+  if (!this.head) {
+    this.head = new Node(input);
+    return;
+  }
+  if (index === 0) {
+    this.head = new Node(input, this.head);
+    return;
+  }
+
+  const previousNode = this.getAt(index - 1);
+  let newNode = new Node(input);
+  newNode.nextNode = previousNOde.nextNode;
+  previousNode.nextNode = newNode;
+
+  return this.head;
+};
 
 LinkedList.prototype.printLinkedList = function () {
   console.log(JSON.stringify(this.head, null, 4));
