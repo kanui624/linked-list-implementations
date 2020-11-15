@@ -117,6 +117,10 @@ LinkedList.prototype.deleteAtIndex = function (index) {
   return this.head;
 };
 
+LinkedList.prototype.deleteList = function () {
+  this.head = null;
+};
+
 LinkedList.prototype.printLinkedList = function () {
   console.log(JSON.stringify(this.head, null, 4));
 };
@@ -130,5 +134,6 @@ list.addToEnd(4);
 list.deleteLastNode();
 list.deleteAtIndex(2);
 list.insertAtIndex(1, 300);
+list.deleteList();
 
 list.printLinkedList();
