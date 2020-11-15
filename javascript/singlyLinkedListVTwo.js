@@ -37,4 +37,18 @@ LinkedList.prototype.addToBack = function (input) {
     return this.head;
   }
 };
+
+LinkedList.prototype.getAtIndex = function (index) {
+  let count = 0;
+  let currentNode = this.head;
+  while (currentNode) {
+    if (count === index) {
+      return currentNode;
+    }
+    count++;
+    currentNode = currentNode.nextNode;
+  }
+  return null;
+};
+
 let list = new LinkedList();
