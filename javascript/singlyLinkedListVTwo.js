@@ -96,7 +96,7 @@ LinkedList.prototype.deleteLastNode = function () {
   return this.head;
 };
 
-LinkedList.prototype.deleteAt = function (index) {
+LinkedList.prototype.deleteAtIndex = function (index) {
   if (!this.head) {
     this.head = new Node(input);
     return;
@@ -107,9 +107,9 @@ LinkedList.prototype.deleteAt = function (index) {
     return;
   }
 
-  const previousNode = this.getAt(index - 1);
+  const previousNode = this.getIndex(index - 1);
 
-  if (!previousNode || !previous.nextNode) {
+  if (!previousNode || !previousNode.nextNode) {
     return;
   }
 
@@ -128,6 +128,7 @@ list.addToFront(1);
 list.addToEnd(4);
 list.addToEnd(4);
 list.deleteLastNode();
+list.deleteAtIndex(2);
 list.insertAtIndex(1, 300);
 
 list.printLinkedList();
