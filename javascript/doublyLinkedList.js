@@ -67,6 +67,27 @@ class doublyLinkedList {
     return removed;
   }
 
+  insertNodeAtIndex(input, index) {
+    if (index < 0 || index > this.listLength) {
+      return null;
+    } else if (index === this.listLength) {
+      return this.addTail(input);
+    } else if (index === 0) {
+      return this.addHead(input);
+    }
+
+    let prev = this.findNode(index - 1),
+      newNode = new Node(input),
+      temp = prev.nextNode;
+
+    prev.nextNode = newNode;
+    newNode.nextNode = temp;
+    newNode.previousNode = prev;
+
+    this.listLength++;
+    return true;
+  }
+
   findNode(index) {
     let currentNode;
     if (index < 0 || index >= this.length) {
@@ -96,6 +117,7 @@ const newList = new doublyLinkedList();
 newList.addHead(3);
 newList.addHead(2);
 newList.addTail(4);
+newList.insertNodeAtIndex(8, 1);
 // newList.removeHead();
 // newList.removeTail();
 const find = newList.findNode(0);
