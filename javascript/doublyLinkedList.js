@@ -125,6 +125,14 @@ class doublyLinkedList {
     return currentNode;
   }
 
+  updateNode(input, index) {
+    let node = this.findNode(index);
+    if (node) {
+      node.node = input;
+    }
+    return node;
+  }
+
   printList() {
     console.log(this.listLength);
     console.log(this.head);
@@ -135,8 +143,9 @@ const newList = new doublyLinkedList();
 newList.addHead(3);
 newList.addHead(2);
 newList.addTail(4);
+newList.updateNode(10, 0);
 // newList.insertNodeAtIndex(8, 1);
 // newList.removeHead();
 // newList.removeTail();
-const rem = newList.removeAtIndex(0);
+// const rem = newList.removeAtIndex(0);
 newList.printList();
