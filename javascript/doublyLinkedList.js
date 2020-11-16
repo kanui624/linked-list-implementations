@@ -26,6 +26,20 @@ class doublyLinkedList {
       return this;
     }
   }
+
+  addTail(input) {
+    let newNode = new Node(input);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.nextNode = newNode;
+      newNode.previousNode = this.tail;
+      this.tail = newNode;
+      this.listLength++;
+      return this;
+    }
+  }
 }
 
 const newList = new doublyLinkedList();
