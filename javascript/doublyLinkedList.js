@@ -53,6 +53,20 @@ class doublyLinkedList {
     }
   }
 
+  removeTail() {
+    let removed = this.tail;
+    if (!this.tail) {
+      return undefined;
+    } else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
+    this.tail = removed.previousNode;
+    this.tail.nextNode = null;
+    this.listLength--;
+    return removed;
+  }
+
   printList() {
     console.log(this.head);
   }
@@ -63,5 +77,5 @@ newList.addHead(3);
 newList.addHead(2);
 newList.addTail(4);
 newList.removeHead();
-
+newList.removeTail();
 newList.printList();
