@@ -40,6 +40,10 @@ class doublyLinkedList {
       return this;
     }
   }
+
+  printList() {
+    console.log(this.head);
+  }
 }
 
 const newList = new doublyLinkedList();
